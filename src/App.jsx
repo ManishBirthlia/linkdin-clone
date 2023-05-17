@@ -1,7 +1,17 @@
-import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Home from "./components/Home";
+import Login from "./components/Login";
+import { useState } from "react";
 
-export default function App(){
-    return(
-        <h1> Hello world </h1>
-    );
+function App() {
+  const [isLogin,setLogin] =useState(false);
+  return (
+    <div className="App">
+      <Header />
+      {isLogin?<Home/>:<Login setLogin={()=>{setLogin(!isLogin);}} />}
+    </div>
+  );
 }
+
+export default App;
